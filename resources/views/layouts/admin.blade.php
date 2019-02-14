@@ -20,6 +20,7 @@
     <link href="{{url('/css/style.css')}}" rel="stylesheet">
     <link href="{{url('/css/plugins/jquery.auto-complete.css')}}" rel="stylesheet">
 
+
 	  @yield('css_includes')
 
 	<style>

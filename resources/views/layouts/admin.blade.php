@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta name="keyword" content="">
 	  <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="{{url('image/tab-icon.ico')}}">
 
     <title>HMS</title>
 
@@ -90,17 +90,12 @@
 
             <!-- Breadcrumb -->
             <ol class="breadcrumb" id="breadcrumb-buttons">
-                <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item"><a href="#">Admin</a>
-                </li>
+
+                <li class="breadcrumb-item">Admin</li>
                 <li class="breadcrumb-item active">Dashboard</li>
 
                 <!-- Breadcrumb Menu-->
-                <li class="breadcrumb-menu d-md-down-none">
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <a class="btn btn-secondary" href="{{ url('auth/logout') }}"><i class="icon-settings"></i> &nbsp;Logout</a>
-                    </div>
-                </li>
+
             </ol>
 
 
@@ -119,14 +114,6 @@
     </footer>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="{{ url('/bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ url('/bower_components/tether/dist/js/tether.min.js') }}"></script>
-    <script src="{{ url('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url('/bower_components/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ url('/bower_components/pace/pace.min.js') }}"></script>
-
-    <script src="{{url('bower_components/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-
     <script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -136,12 +123,10 @@
     <!-- Plugins and scripts required by all views -->
 
     <!-- GenesisUI main scripts -->
-    <script src="{{ url('/js/app.js') }}"></script>
+    <script  type="text/javascript" src="{{ url('/js/app.js') }}"></script>
 
     <!-- Plugins and scripts required by this views -->
-	<script>
-		@yield('script_includes')
-	</script>
+
 
 
 	<script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>

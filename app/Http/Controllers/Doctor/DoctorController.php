@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Doctor;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller as Controller;
 
-class AdminController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +14,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        // $this->middleware('auth:admin');
     }
     /**
      * Show the application dashboard.
@@ -22,6 +23,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        return view('doctor.index');
     }
 }

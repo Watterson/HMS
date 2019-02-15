@@ -15,7 +15,7 @@
                 <a class="nav-link" id="admin-roles" href="{{ url('admin/roles')}}"><i class="icon-people"></i> Roles</a>
             </li>
 			<li class="nav-item">
-                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/users/search/view')}}"><i class="icon-note"></i> Edit Details</a>
+                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/patients')}}"><i class="icon-note"></i> Edit Details</a>
             </li>
 			<li class="nav-item">
                 <a class="nav-link" id="admin-issue-cards" href="{{ url('admin/card/search_index')}}"><i class="icon-wallet"></i> Issue Cards</a>

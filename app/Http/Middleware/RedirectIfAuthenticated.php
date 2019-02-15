@@ -25,7 +25,15 @@ class RedirectIfAuthenticated
                 break;
             default:
                 if (Auth::guard($guard)->check()) {
-                    return redirect()->route('dashboard');
+                  if(strtolower(Auth()->user()->role) == 'doctor')
+                  {
+                      return Redirect()->to('/doctor');
+                  }
+                  elseif(strtolower(Auth()->user()->role) == 'frontdesk')
+                  {
+                      return Redirect()->to('/front_desk');
+                  }
+                    // return redirect()->route('dashboard');
                 }
                 break;
         }

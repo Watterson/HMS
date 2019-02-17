@@ -29,9 +29,9 @@ class RedirectIfAuthenticated
                   {
                       return Redirect()->to('/doctor');
                   }
-                  elseif(strtolower(Auth()->user()->role) == 'frontdesk')
+                  elseif(strtolower(Auth()->user()->role) == 'patient')
                   {
-                      return Redirect()->to('/front_desk');
+                      return Redirect()->to('/patient');
                   }
                 }
                   break;  // return redirect()->route('dashboard');

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
-use App\Model\User as User;
-use App\Model\Role as Role;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User as User;
 
 
 class UserController extends Controller
@@ -29,11 +29,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $roles = Role::all();
 
         return View('admin.accountManager.index', [
             'users' => $users,
-            'roles'  => $roles
         ]);
     }
     public function getAdd()
@@ -45,26 +43,28 @@ class UserController extends Controller
     {
         $this->validate(Request(), [
             'name'     => 'required|min:3',
-            'email'    => 'required|email|unique:logins',
+            'email'    => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
             'role'     => 'required',
         ]);
 
-            $user = new User;
-            // create login first
-            $user->name     = Request()->input('name');
-            $user->email    = Request()->input('email');
-            $user->password = Hash::make(Request()->input('password'));
-            $user->role     = 'doctor';
 
-            $user->save();
+            try {
+              $user = new User;
+              // create login first
+              $user->name     = Request()->input('name');
+              $user->email    = Request()->input('email');
+              $user->password = Hash::make(Request()->input('password'));
+              $user->role     = Request()->input('role');
 
-            $allUsers = User::all();
-            $roles = Role::all();
+              $user->save();
+            } catch (Exception $e) {
+                report($e);
 
-            return View('admin.accountManager.index', [
-                'users' => $allUsers,
-                'roles' => $roles
-            ]);
+                return $e;
+            }
+
+
+            return Redirect('admin/user');
     }
 }

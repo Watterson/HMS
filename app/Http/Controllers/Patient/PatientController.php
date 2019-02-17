@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Patient;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Models\User as User;
 
 
-class DoctorController extends Controller
+class PatientController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,10 +25,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 'patient')->get();
 
-        return view('doctor.index', [
-            'users' => $users,
+
+        return view('patient.index', [
+
         ]);
     }
 }

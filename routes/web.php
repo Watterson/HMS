@@ -57,7 +57,7 @@ Route::prefix('admin')->group(function() {
 
     // User Management
     Route::get('/user', 'Admin\UserController@index');
-    Route::get('/user/add', 'Admin\UserController@getAdd'); // ✓
+    Route::post('/user', 'Admin\UserController@postAdd');
     Route::post('/user/add', 'Admin\UserController@postAdd'); // ✓
     Route::get('/user/edit', 'Admin\UserController@getEdit'); // ✓
     Route::post('/user/edit', 'Admin\UserController@postEdit'); // ✓
@@ -67,6 +67,10 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('doctor')->group(function() {
    Route::get('/', 'Doctor\DoctorController@index');
+});
+
+Route::prefix('patient')->group(function() {
+   Route::get('/', 'Patient\PatientController@index');
 });
 
 

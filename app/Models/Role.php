@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Role extends Authenticatable
 {
     use Notifiable;
 
@@ -15,7 +15,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'role', 'description',
     ];
 
     /**
@@ -23,7 +23,5 @@ class Admin extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+
 }

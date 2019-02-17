@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
+Auth::routes();
+
 // Route::post('/setpassword',  resetpassword(){
 //       $email = "admin@admin.com";
 //       $password =  Hash::make("jubilee");
@@ -36,11 +38,10 @@ Route::prefix('admin')->group(function() {
 
     // Add Login Users
     Route::get('/', 'AdminController@index'); // ✓
-    Route::get('/logins', 'Admin\LoginController@getIndex'); // ✓
+    Route::get('/logins/index', 'Admin\LoginController@getIndex'); // ✓
 
     Route::get('/logins/add', 'Admin\LoginController@getAdd'); // ✓
     Route::post('/logins/add', 'Admin\LoginController@postAdd'); // ✓
-
 
     // Edit Login Users
     Route::get('/login/edit', 'Admin\LoginController@getEdit'); // ✓
@@ -54,30 +55,34 @@ Route::prefix('admin')->group(function() {
     Route::get('/roles/add', 'Admin\RoleController@getAdd'); // ✓
     Route::post('/roles/add', 'Admin\RoleController@postAdd'); // ✓
 
-    // Centre Management
-    Route::get('/patients/search', 'Admin\PatientController@searchPatients');
-    Route::get('/patients', 'Admin\PatientController@index');
-    Route::get('/patients/add', 'Admin\PatientController@getAdd'); // ✓
-    Route::post('/patients/add', 'Admin\PatientController@postAdd'); // ✓
-    Route::get('/patients/edit', 'Admin\PatientController@getEdit'); // ✓
-    Route::post('/patients/edit', 'Admin\PatientController@postEdit'); // ✓
+    // User Management
+    Route::get('/user', 'Admin\UserController@index');
+    Route::get('/user/add', 'Admin\UserController@getAdd'); // ✓
+    Route::post('/user/add', 'Admin\UserController@postAdd'); // ✓
+    Route::get('/user/edit', 'Admin\UserController@getEdit'); // ✓
+    Route::post('/user/edit', 'Admin\UserController@postEdit'); // ✓
+    Route::post('/user/search', 'Admin\UserController@searchUsers');
 
 });
 
-Auth::routes();
-Route::group(['middleware' => ['auth', 'role:doctor'], 'prefix' => '/doctor'], function () {
+Route::prefix('doctor')->group(function() {
    Route::get('/', 'Doctor\DoctorController@index');
-   Route::get('/patients/search', 'Doctor\PatientController@searchPatients');
-   Route::get('/patients', 'Doctor\PatientController@patientsIndex');
-   Route::get('/patients/add', 'Doctor\PatientController@getAdd'); // ✓
-   Route::post('/patients/add', 'Doctor\PatientController@postAdd'); // ✓
-   Route::get('/patients/edit', 'Doctor\PatientController@getEdit'); // ✓
-   Route::post('/patients/edit', 'Doctor\PatientController@postEdit'); // ✓
-
-   Route::get('/test-users', 'Admin\TestUsersController@getIndex');
-   Route::get('/test-users/add', 'Admin\TestUsersController@getAdd');
-   Route::post('/test-users/add', 'Admin\TestUsersController@postAdd');
-
 });
+
+
+// Route::group(['middleware' => ['auth', 'role:doctor'], 'prefix' => '/doctor'], function () {
+//    Route::get('/', 'Doctor\DoctorController@index');
+//    Route::get('/patients/search', 'Doctor\PatientController@searchPatients');
+//    Route::get('/patients', 'Doctor\PatientController@patientsIndex');
+//    Route::get('/patients/add', 'Doctor\PatientController@getAdd'); // ✓
+//    Route::post('/patients/add', 'Doctor\PatientController@postAdd'); // ✓
+//    Route::get('/patients/edit', 'Doctor\PatientController@getEdit'); // ✓
+//    Route::post('/patients/edit', 'Doctor\PatientController@postEdit'); // ✓
+//
+//    Route::get('/test-users', 'Admin\TestUsersController@getIndex');
+//    Route::get('/test-users/add', 'Admin\TestUsersController@getAdd');
+//    Route::post('/test-users/add', 'Admin\TestUsersController@postAdd');
+//
+// });
 Route::get('/dashboard', 'DashboardController@index')->name('user.dashboard');
 //Route::get('/user', 'UserController@index')->name();

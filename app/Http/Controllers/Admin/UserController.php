@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
-use App\User as User;
+use App\Model\User as User;
+use App\Model\Role as Role;
 
-class PatientController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,9 +29,11 @@ class PatientController extends Controller
     public function index()
     {
         $users = User::all();
+        $roles = Role::all();
 
         return View('admin.accountManager.index', [
-            'users' => $users
+            'users' => $users,
+            'roles'  => $roles
         ]);
     }
     public function getAdd()
@@ -43,7 +47,7 @@ class PatientController extends Controller
             'name'     => 'required|min:3',
             'email'    => 'required|email|unique:logins',
             'password' => 'required|confirmed|min:6',
-            'role'    => 'min:3',
+            'role'     => 'required',
         ]);
 
             $user = new User;
@@ -56,9 +60,11 @@ class PatientController extends Controller
             $user->save();
 
             $allUsers = User::all();
+            $roles = Role::all();
 
             return View('admin.accountManager.index', [
-                'users' => $allUsers
+                'users' => $allUsers,
+                'roles' => $roles
             ]);
     }
 }

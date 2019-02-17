@@ -64,20 +64,53 @@
             </li>
         </ul>
         <ul class="nav navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @if (Auth::guard('admin')->check() || Auth::guard()->check())
+                <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            @if (Auth::guard('admin')->check())
+                                Admin
+                            @else
+                                {{ Auth::user()->name }}
+                            @endif
+                            <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (Auth::guard('admin')->check())
+                                <a class="dropdown-item" href="{{ url('/admin')}}">Dashboard</a>
+                            @else
+                                <a class="dropdown-item" href="/">Dashboard</a>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+            @else
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-md-down-none">admin</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-header text-center">
-                        <strong>Account</strong>
+                    <a id="linkDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ __('Login') }}
+                        <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="linkDropdown">
+                        <a class="dropdown-item" href="{{ route('login') }}">
+                            {{ __('User') }}
+                        </a>
+                        <a class="dropdown-item" href="{{ route('admin.login') }}">
+                            {{ __('Admin') }}
+                        </a>
                     </div>
-                    <div class="dropdown-header text-center">
-                        <strong>Settings</strong>
-                    </div>
-                    <a class="dropdown-item" href="{{ url('auth/logout') }}"><i class="fa fa-lock"></i> Logout</a>
-                </div>
-            </li>
+                </li>
+                <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+            @endif
         </ul>
     </header>
 

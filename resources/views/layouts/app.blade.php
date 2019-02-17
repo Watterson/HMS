@@ -7,8 +7,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{url('/image/tab-icon.ico')}}">
-    <title>{{ config('app.name', 'HMS') }}</title>
+    <link rel="shortcut icon" type="image/ico" href="{{url('images/tab-icon.ico')}}">
+    <!-- <title>{{ config('app.name', 'HMS') }}</title> -->
+    <title>HMS</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,9 +24,13 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+
             <div class="container">
+
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{url('/images/tab-icon.ico')}}" >
+                  HMS
+                    <!-- {{ config('app.name', 'HMS') }} -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -53,9 +58,9 @@
 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @if (Auth::guard('admin')->check())
-                                            <a class="dropdown-item" href="http://laravelapp/admin/dashboard">Dashboard</a>
+                                            <a class="dropdown-item" href="{{url('/')}}">Dashboard</a>
                                         @else
-                                            <a class="dropdown-item" href="http://laravelapp/dashboard">Dashboard</a>
+                                            <a class="dropdown-item" href="{{url('/')}}">Dashboard</a>
                                         @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
@@ -95,7 +100,7 @@
 
 
           <main class="py-4">
-              @yield('content')
+              @yield('main')
           </main>
 
         </div>

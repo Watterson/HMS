@@ -87,27 +87,10 @@ class LoginController extends Controller
         $role = strtolower($user->role);
         switch ($role)
         {
-            case 'centre':
-                return '/';
+            case 'doctor':
+                return '/doctor';
                 break;
-            case 'admin':
-                return '/admin';
-                break;
-            case 'shop_manager':
-                return '/tenant';
-                break;
-            case 'customer service':
-                return '/customer_service';
-                break;
-            case 'parking validation':
-                return '/parking';
-                break;
-            case 'account_manager':
-                return '/account-manager';
-                break;
-            case 'data':
-                return '/data';
-                break;
+            
         }
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Doctor;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
+use App\Model\User as User;
+
 
 class DoctorController extends Controller
 {
@@ -23,6 +25,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return view('doctor.index');
+        $users = User::where('role', 'patient')->get();
+
+        return view('doctor.index', [
+            'users' => $users,
+        ]);
     }
 }

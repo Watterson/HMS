@@ -33,9 +33,9 @@ class RedirectIfAuthenticated
                   {
                       return Redirect()->to('/front_desk');
                   }
-                    // return redirect()->route('dashboard');
                 }
-                break;
+                  break;  // return redirect()->route('dashboard');
+
         }
         return $next($request);
     }

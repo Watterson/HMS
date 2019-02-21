@@ -2,18 +2,18 @@
 @section('main')
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <!-- <div class="col-md-10">
         <div class="card">
             <div class="card-header">Register User</div>
 
-            <div class="card-body">
+            <div class="card-block justify-content-left">
                 <form method="POST" action="{{url('/admin/user/add') }}">
                     @csrf
+                  <div class="row">
+                    <div class="form-group row col col-sm-12 col-xs-12">
+                        <label for="name" class="col-md-3 col-form-label text-md-center">{{ __('Name') }}</label>
 
-                    <div class="form-group row">
-                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                             @if ($errors->has('name'))
@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row col col-sm-12 col-xs-12">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                         <div class="col-md-6">
@@ -37,7 +37,7 @@
                             @endif
                         </div>
                     </div>
-
+                  </div>
                     <div class="form-group row">
                         <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -70,6 +70,11 @@
                             <option value="patient">Patient</option>
 
                           </select>
+                          @if ($errors->has('role'))
+                              <span class="invalid-feedback" role="alert">
+                                  <strong>{{ $errors->first('role') }}</strong>
+                              </span>
+                          @endif
                         </div>
                       </div>
 
@@ -84,16 +89,17 @@
                 </form>
             </div>
         </div>
-    </div>
-    <!-- <div class="col-lg-10 ">
+    </div> -->
+    <div class="col-lg-10 ">
       <div class="card">
           <div class="card-header">
-              <strong>Add User</strong>
+              <strong>Register User</strong>
           </div>
-          <div class="card-block text-center" >
+
             {!! Form::open(['url'=>'admin/user','class'=>'form-control']) !!}
+            <div class="card-block text-left" >
             <div class="row">
-              <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('userName')) has-danger @endif">
+              <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('userName')) has-danger @endif">
                 <label for="userName">Name</label>
                 <div class="controls">
                     {!! Form::text('name','',['class'=>'form-control']) !!}
@@ -135,23 +141,28 @@
                     @endif
                 </div>
               </div>
+
             <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12 offset-lg-4 offset-md-3 offset-sm-12 offset-xs-12 ">
-              <div class="form-group   @if($errors->first('role')) has-danger @endif">
+              <div class="form-group   @if($errors->first('role')) has-danger @endif text-center">
                 <label for="role">Role</label>
-                <select id="role" class="form-control">
+                <select id="role" name='role' class="form-control">
                   <option selected>Choose...</option>
                   <option value="doctor">Doctor</option>
                   <option value="patient">Patient</option>
 
                 </select>
               </div>
-            <button type="submit" class="btn btn-primary mb-2">Submit User</button>
+
             <div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary mb-2 ">Submit User</button>
+              </div>
           </div>
         </div>
         </div>
       </div>
-    </div> -->
+      </div>
+    </div>
     <div class="col-lg-10 ">
         <div class="card">
             <div class="card-header">

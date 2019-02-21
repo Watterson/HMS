@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function() {
     // User Management
     Route::get('/user', 'Admin\UserController@index');
     Route::post('/user', 'Admin\UserController@postAdd');
-    Route::post('/user/add', 'Admin\UserController@postAdd'); // ✓
+ //Route::post('/user/add', 'Admin\UserController@postAdd'); // ✓
     Route::get('/user/edit', 'Admin\UserController@getEdit'); // ✓
     Route::post('/user/edit', 'Admin\UserController@postEdit'); // ✓
     Route::post('/user/search', 'Admin\UserController@searchUsers');

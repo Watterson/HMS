@@ -89,8 +89,11 @@ class LoginController extends Controller
         {
             case 'doctor':
                 return '/doctor';
-                break;
-            
+                break
+                case 'patient':
+                    return '/patient';
+                    break;
+
         }
     }
 }

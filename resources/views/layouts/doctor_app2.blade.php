@@ -116,21 +116,21 @@
 
 
     <div class="app-body">
-        @include('layouts.admin_sidebar')
+        @include('layouts.doctor_sidebar')
 
                 <!-- Main content -->
         <main class="main">
 
 
             <!-- Breadcrumb -->
-            <!-- <ol class="breadcrumb" id="breadcrumb-buttons">
+            <ol class="breadcrumb" id="breadcrumb-buttons">
 
                 <li class="breadcrumb-item">Admin</li>
-                <li class="breadcrumb-item active">Dashboard</li> -->
+                <li class="breadcrumb-item active">Dashboard</li>
 
                 <!-- Breadcrumb Menu-->
 
-            <!-- </ol> -->
+            </ol>
 
 
             <div class="container-fluid">

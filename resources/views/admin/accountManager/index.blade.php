@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('main')
 
-<div class="row justify-content-center">
+<div class="row justify-content-center  mt-4">
     <!-- <div class="col-md-10">
         <div class="card">
             <div class="card-header">Register User</div>
@@ -96,8 +96,9 @@
               <strong>Register User</strong>
           </div>
 
-            {!! Form::open(['url'=>'admin/user','class'=>'form-control']) !!}
+
             <div class="card-block text-left" >
+              {!! Form::open(['url'=>'admin/user','class'=>'']) !!}
             <div class="row">
               <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('userName')) has-danger @endif">
                 <label for="userName">Name</label>
@@ -174,13 +175,12 @@
                   <th>Name</th>
             			<th>Email</th>
                   <th>Role</th>
-                        <th></th>
             			<?/*<th></th>*/?>
 
             		</tr>
             		@foreach($users as $user)
             		<tr>
-            			<td><a href="{{url('admin/user/veiw?userId='.$user->id)}}">{{ $user->name }}</a></td>
+            			<td><a href="{{url('admin/user/edit?user='.$user->id)}}">{{ $user->name }}</a></td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->role }}</td>
             		</tr>

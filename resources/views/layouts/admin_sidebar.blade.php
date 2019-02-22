@@ -8,16 +8,17 @@
             <li class="nav-title">
                 User Management
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link"id="admin-logins"  href="{{ url('admin/logins')}}"><i class="icon-user"></i> Logins</a>
+            </li>
+           -->
+			      <li class="nav-item">
+                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/user')}}"><i class="icon-note"></i>Users</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="admin-roles" href="{{ url('admin/roles')}}"><i class="icon-people"></i> Roles</a>
             </li>
-			<li class="nav-item">
-                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/user')}}"><i class="icon-note"></i>Users</a>
-            </li>
-			<li class="nav-item">
+			<!-- <li class="nav-item">
                 <a class="nav-link" id="admin-issue-cards" href="{{ url('admin/card/search_index')}}"><i class="icon-wallet"></i> Issue Cards</a>
             </li>
             <li class="nav-item">
@@ -61,7 +62,7 @@
               </li>
             </ul>
           </li>
-
+ -->
 
 
             <!-- What is this?
@@ -69,7 +70,7 @@
                 <a class="nav-link" id="admin-card-management" href="{{ url('admin/card/search')}}"><i class="icon-folder"></i>Card Management</a>
             </li>
             -->
-
+<!--
             <li class="nav-title">
                 Test
             </li>
@@ -84,7 +85,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="admin-options" href="{{ url('admin/loyalty')}}"><i class="icon-heart"></i> Options</a>
-            </li>
+            </li> -->
 
         </ul>
     </nav>

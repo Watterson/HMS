@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.doctor_app2')
 
 @section('css_includes')
 
 @endsection
 
 @section('main')
-<div class="col-md-8">
+
+<!-- <div class="col-md-8">
     <div class="card">
         <div class="card-header">{{ __('Register') }}</div>
 
@@ -73,7 +74,69 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
+<div class="col-lg-10 offset-lg-1">
+  <div class="card">
+      <div class="card-header">
+          <strong>Register User</strong>
+      </div>
+
+
+        <div class="card-block text-left" >
+          {!! Form::open(['url'=>'doctor/patient/add','class'=>'']) !!}
+        <div class="row">
+          <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('userName')) has-danger @endif">
+            <label for="userName">Name</label>
+            <div class="controls">
+                {!! Form::text('name','',['class'=>'form-control']) !!}
+
+                @if($errors->first('name'))
+                    <div class="form-control-feedback">{{$errors->first('name')}}</div>
+                @endif
+            </div>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('email')) has-danger @endif" >
+            <label class="control-label">Email (login)</label>
+            <div class="controls">
+                {!! Form::text('email','',['class'=>'form-control']) !!}
+
+                @if($errors->first('email'))
+                    <div class="form-control-feedback">{{$errors->first('email')}}</div>
+                @endif
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('password')) has-danger @endif">
+              <label class="control-label">Password</label>
+              <div class="controls">
+                  {!! Form::password('password',['class'=>'form-control']) !!}
+
+                  @if($errors->first('password'))
+                      <div class="form-control-feedback">{{$errors->first('password')}}</div>
+                  @endif
+              </div>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 @if($errors->first('password')) has-danger @endif">
+            <label class="control-label">Password Confirmation</label>
+            <div class="controls">
+                {!! Form::password('password_confirmation',['class'=>'form-control']) !!}
+
+                @if($errors->first('password'))
+                    <div class="form-control-feedback">{{$errors->first('password')}}</div>
+                @endif
+            </div>
+          </div>
+
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary mb-2 ">Submit User</button>
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  </div>
 <div class="col-lg-10 offset-lg-1">
     <div class="card">
         <div class="card-header">
@@ -88,11 +151,8 @@
             </tr>
             @foreach($users as $user)
             <tr>
-              <td></td>
-              <td></td>
-              <td><a href="{{url('admin/user/veiw?userId='.$user->id)}}">{{ $user->name }}</a></td> -->
+              <td><a href="{{url('doctor/patient/edit?user='.$user->id)}}">{{ $user->name }}</a></td>
               <td>{{ $user->email }}</td>
-               <td>{{ $user->role }}</td>
             </tr>
             @endforeach
 

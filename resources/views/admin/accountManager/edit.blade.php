@@ -1,21 +1,21 @@
-@extends('templates.admin')
+@extends('layouts.admin')
 @section('main')
-<div class="row">
+<div class="row mt-4">
     <div class="col-lg-8 offset-lg-2">
-        <a href="{{url('admin/accounts')}}" >< Managers</a>
+        <a href="{{url('admin/user')}}" >< All Users</a>
 
         <div class="card">
             <div class="card-header">
-                <strong>Edit - {{ $manager->name }}</strong>
+                <strong>Edit - {{$name}}</strong>
             </div>
             <div class="card-block">
-                {!! Form::model($manager,['uri'=>'admin/accounts/add','class'=>'']) !!}
+                {!! Form::model($user,['url'=>'admin/user/edit','class'=>'']) !!}
                 {!! Form::hidden('id') !!}
 
                 <div class="form-group @if($errors->first('name')) has-danger @endif">
                     <label class="control-label">Name</label>
                     <div class="controls">
-                        {!! Form::text('name',null,['class'=>'form-control']) !!}
+                        {!! Form::text('name',$user['name'],['class'=>'form-control']) !!}
 
                         @if($errors->first('name'))
                             <div class="form-control-feedback">{{$errors->first('name')}}</div>
@@ -26,7 +26,7 @@
                 <div class="form-group @if($errors->first('email')) has-danger @endif">
                     <label class="control-label">Email (login)</label>
                     <div class="controls">
-                        {!! Form::text('email',null,['class'=>'form-control']) !!}
+                        {!! Form::text('email',$user['email'],['class'=>'form-control']) !!}
 
                         @if($errors->first('email'))
                             <div class="form-control-feedback">{{$errors->first('email')}}</div>

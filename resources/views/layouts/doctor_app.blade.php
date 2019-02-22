@@ -17,11 +17,14 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link href="{{url('/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
 
@@ -92,13 +95,38 @@
         </nav>
 
         <div class="app-body">
+          @include('layouts.admin_sidebar')
+
+          <main class="main">
 
 
-          <main class="py-4">
-              @yield('main')
+              <!-- Breadcrumb -->
+              <ol class="breadcrumb" id="breadcrumb-buttons">
+
+                  <li class="breadcrumb-item">Admin</li>
+                  <li class="breadcrumb-item active">Dashboard</li>
+
+                  <!-- Breadcrumb Menu-->
+
+              </ol>
+
+              <div class="container-fluid">
+                  <div class="animated fadeIn">
+                      @yield('main')
+
+                  </div>
+              </div>
           </main>
 
         </div>
     </div>
+
+    <script  type="text/javascript" src="{{ url('/js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

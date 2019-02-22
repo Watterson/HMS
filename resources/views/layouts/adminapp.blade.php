@@ -50,6 +50,8 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         @if (Auth::guard('admin')->check())
                                             Admin
+                                        @elseif(Auth::guard('doctor')->check())
+                                            Dr {{ Auth::user()->name }}
                                         @else
                                             {{ Auth::user()->name }}
                                         @endif
@@ -57,6 +59,13 @@
                                     </a>
 
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @if (Auth::guard('admin')->check())
+                                            <a class="dropdown-item" href="{{url('/admin')}}">Dashboard</a>
+                                        @elseif (Auth::guard('doctor')->check())
+                                            <a class="dropdown-item" href="{{url('/doctor')}}">Dashboard</a>
+                                        @elseif (Auth::guard('patient')->check())
+                                            <a class="dropdown-item" href="{{url('/patient')}}">Dashboard</a>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -92,7 +101,7 @@
         </nav>
 
         <div class="app-body">
-
+            @include('layouts.admin_sidebar')
 
           <main class="py-4">
               @yield('main')

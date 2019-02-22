@@ -67,4 +67,38 @@ class UserController extends Controller
 
             return Redirect('admin/user');
     }
+
+    public function getEdit()
+    {
+        $userId = Request()->input('user');
+
+        $user = $this->findId($userId);
+
+        $name = $user->name;
+        $email = $user->email;
+      //  $mobile = $user->mobile;
+      //  $address = $user->address;
+      //  $gender = $user->gender;
+        $role = $user->role;
+        // $alergies;
+        // $perscriptions;
+        // $appointments;
+        return View('admin.accountManager.edit', [
+            'user' => $user,
+            'name' => $name,
+            'email' => $email,
+          //  'mobile' => $mobile,
+          //  'address' => $address,
+            'role' => $role,
+          //  'gender' => $gender,
+        ]);
+    }
+
+    public function findId($id){
+      $users = User::all();
+
+      $user = $users->find($id);
+
+      return $user;
+    }
 }

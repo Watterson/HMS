@@ -31,4 +31,66 @@ class DoctorController extends Controller
             'users' => $users,
         ]);
     }
+
+    public function postAdd()
+    {
+        $this->validate(Request(), [
+            'name'     => 'required|min:3',
+            'email'    => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+
+            try {
+              $user = new User;
+              // create login first
+              $user->name     = Request()->input('name');
+              $user->email    = Request()->input('email');
+              $user->password = Hash::make(Request()->input('password'));
+              $user->role     = 'patient';
+
+              $user->save();
+            } catch (Exception $e) {
+                report($e);
+
+                return $e;
+            }
+
+
+            return Redirect('admin/user');
+    }
+
+    public function getEdit()
+    {
+        $userId = Request()->input('user');
+
+        $user = $this->findId($userId);
+
+        $name = $user->name;
+        $email = $user->email;
+      //  $mobile = $user->mobile;
+      //  $address = $user->address;
+      //  $gender = $user->gender;
+        // $role = $user->role;
+        // $alergies;
+        // $perscriptions;
+        // $appointments;
+        return View('admin.accountManager.edit', [
+            'user' => $user,
+            'name' => $name,
+            'email' => $email,
+          //  'mobile' => $mobile,
+          //  'address' => $address,
+          //  'role' => $role,
+          //  'gender' => $gender,
+        ]);
+    }
+
+    public function findId($id){
+      $users = User::all();
+
+      $user = $users->find($id);
+
+      return $user;
+    }
 }

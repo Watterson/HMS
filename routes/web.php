@@ -62,15 +62,42 @@ Route::prefix('admin')->group(function() {
     Route::get('/user/edit', 'Admin\UserController@getEdit'); // ✓
     Route::post('/user/edit', 'Admin\UserController@postEdit'); // ✓
     Route::post('/user/search', 'Admin\UserController@searchUsers');
+    //add users
+    Route::get('/user/add_patient', 'Admin\UserController@getPatientAdd'); // ✓
+    Route::post('/user/add_patient', 'Admin\UserController@postPatientAdd'); // ✓
+    Route::get('/user/add_doctor', 'Admin\UserController@getDoctorAdd'); // ✓
+    Route::post('/user/add_doctor', 'Admin\UserController@postDoctorAdd'); // ✓
+    //edit users
+    Route::get('/user/edit_patient', 'Admin\UserController@getPatientEdit');
+    Route::post('/user/edit_patient', 'Admin\UserController@postPatientEdit');
+    Route::get('/user/edit_doctor', 'Admin\UserController@getDoctorEdit');
+    Route::post('/user/edit_doctor', 'Admin\UserController@postDoctorEdit');
 
 });
 
 Route::prefix('doctor')->group(function() {
    Route::get('/', 'Doctor\DoctorController@index');
+
+   //manage patient
+   Route::get('/patients', 'Doctor\PatientController@index');
+   Route::get('/patients/add', 'Doctor\PatientController@getAdd');
+   Route::post('/patients/add', 'Doctor\PatientController@postAdd');
+   Route::get('/patients/edit', 'Doctor\PatientController@getEdit');
+   Route::post('/patients/edit', 'Doctor\PatientController@postEdit');
+   //appointments
+   Route::get('/patients/appointments', 'Doctor\AppointmentController@index');
+   Route::get('/patients/appointments/edit', 'Doctor\AppointmentController@getEdit');
+   Route::post('/patients/appointments/edit', 'Doctor\AppointmentController@postEdit');
+   Route::post('/patients/appointments/delete', 'Doctor\AppointmentController@delete');
+
 });
 
 Route::prefix('patient')->group(function() {
    Route::get('/', 'Patient\PatientController@index');
+   Route::get('/appointments', 'Patient\AppointmentsController@index');
+   Route::get('/appointments/add', 'Patient\AppointmentsController@getAdd');
+   Route::post('/appointments/add', 'Patient\AppointmentsController@postAdd');
+
 });
 
 

@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model{
-    use Notifiable;
+class Appointment extends Model{
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'appointments';
+
     protected $fillable = [
-        'role', 'description',
-    ];
+  		'doctor_id',
+  		'patient_id',
+      'cancel_id',
+      'appointment_time',
+      'duration'
+  	];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-
 }

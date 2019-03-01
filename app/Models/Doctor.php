@@ -5,22 +5,18 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model{
-    use Notifiable;
+class Doctor extends Model{
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'doctors';
+
     protected $fillable = [
-        'role', 'description',
-    ];
+  		'first_name',
+  		'last_name'
+  	];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-
 }

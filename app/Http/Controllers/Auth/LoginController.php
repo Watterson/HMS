@@ -84,15 +84,15 @@ class LoginController extends Controller
 
     public function getRouteGroupIndex($user)
     {
-        $role = strtolower($user->role);
+        $role = strtolower($user->role_id);
         switch ($role)
         {
-            case 'doctor':
+            case 1:
                 return '/doctor';
                 break;
-                case 'patient':
-                    return '/patient';
-                    break;
+            case 2:
+                return '/patient';
+                break;
 
         }
     }

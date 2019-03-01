@@ -94,8 +94,12 @@
         <div class="app-body">
 
 
-          <main class="py-4">
-              @yield('main')
+          <main class="main mt-4">
+            <div class="container-fluid">
+                <div class="animated fadeIn">
+                  @yield('main')
+                </div>
+            </div>
           </main>
 
         </div>

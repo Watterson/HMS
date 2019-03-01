@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Doctor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as Controller;
 use App\Models\User as User;
+use App\Models\Patient as Patient;
+use App\Models\Doctor as Doctor;
 
 
 class DoctorController extends Controller
@@ -25,10 +27,10 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        $users = User::where('role', 'patient')->get();
+        $patientCount = User::where('role_id', 2)->count();
 
         return view('doctor.index', [
-            'users' => $users,
+            'patientCount' => $patientCount,
         ]);
     }
 
@@ -40,16 +42,50 @@ class DoctorController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
 
+        $firstname = Request()->input('first_name');
+        $last_name = Request()->input('last_name');
+        $role = Request()->input('role');
+        $email = Request()->input('email');
+        $password = Hash::make(Request()->input('password'));
+        $mobile = Request()->input('mobile');
+        $address = Request()->input('address');
+        $dob = Request()->input('dob');
+        $gender = Request()->input('gender');
+        $blood_type = Request()->input('blood_type');
+        $family_history = Request()->input('family_history');
+        $medical_history = Request()->input('medical_history');
+        $post_surgical_history = Request()->input('post_surgical_history');
+        $created_by = Request()->input('doctor_id');
 
             try {
               $user = new User;
               // create login first
-              $user->name     = Request()->input('name');
-              $user->email    = Request()->input('email');
-              $user->password = Hash::make(Request()->input('password'));
-              $user->role     = 'patient';
+              $user->email    = $email;
+              $user->password = Hash::make($password);
+              $user->role_id  = $role;
 
               $user->save();
+
+              $user_id = User::where('email', '$email')->get('id');
+
+              $patient = new Patient;
+
+              $patient->id = $user_id;
+              $patient->first_name = $first_name;
+              $patient->last_name = $last_name;
+              $patient->address = $address;
+              $patient->mobile = $mobile;
+              $patient->dob = $dob;
+              $patient->gender = $gender;
+              $patient->blood_type = $blood_type;
+              $patient->family_history = $family_history;
+              $patient->medical_history = $medical_history;
+              $patient->post_surgical_history = $post_surgical_history;
+              $patient->created_by = $created_by;
+
+              $patient->save();
+
+
             } catch (Exception $e) {
                 report($e);
 
@@ -62,21 +98,21 @@ class DoctorController extends Controller
 
     public function getEdit()
     {
-        $userId = Request()->input('user');
+        $patientId = Request()->input('user');
 
-        $user = $this->findId($userId);
+        $patient = $this->findId($patientId);
 
-        $name = $user->name;
-        $email = $user->email;
-      //  $mobile = $user->mobile;
-      //  $address = $user->address;
-      //  $gender = $user->gender;
-        // $role = $user->role;
+        $name = $patient->name;
+        $email = $patient->email;
+      //  $mobile = $patient->mobile;
+      //  $address = $patient->address;
+      //  $gender = $patient->gender;
+        // $role = $patient->role;
         // $alergies;
         // $perscriptions;
         // $appointments;
         return View('admin.accountManager.edit', [
-            'user' => $user,
+            '$patient' => $patient,
             'name' => $name,
             'email' => $email,
           //  'mobile' => $mobile,
@@ -86,10 +122,9 @@ class DoctorController extends Controller
         ]);
     }
 
-    public function findId($id){
-      $users = User::all();
+    public function findPatient($id){
 
-      $user = $users->find($id);
+      $user = Patient::findorFail($id);
 
       return $user;
     }

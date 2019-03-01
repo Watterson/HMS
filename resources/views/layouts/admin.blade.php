@@ -119,7 +119,7 @@
         @include('layouts.admin_sidebar')
 
                 <!-- Main content -->
-        <main class="main">
+        <main class="main ">
 
 
             <!-- Breadcrumb -->
@@ -133,7 +133,7 @@
             <!-- </ol> -->
 
 
-            <div class="container-fluid">
+            <div class="container-fluid mt-4">
                 <div class="animated fadeIn">
                     @yield('main')
 

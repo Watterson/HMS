@@ -19,12 +19,12 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedInteger('doctor_id');
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('cancel_id');
-            $table->integer('appointment_time');
+            $table->date('appointment_time');
             $table->integer('duration');
             $table->timestamps();
-            // $table->foreign('doctor_id')->references('id')->on('users');
-            // $table->foreign('patient_id')->references('id')->on('users');
-            // $table->foreign('cancel_id')->references('id')->on('cancellations')->onDelete('cascade');
+            $table->foreign('doctor_id')->references('id')->on('users');
+            $table->foreign('patient_id')->references('id')->on('users');
+            $table->foreign('cancel_id')->references('id')->on('cancellations')->onDelete('cascade');
 
         });
     }

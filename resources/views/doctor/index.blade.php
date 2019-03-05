@@ -17,7 +17,7 @@
                <div class="small-box bg-aqua ">
                    <div class="inner">
                        <h3>
-                          {{$patientCount}}
+                        7
                        </h3>
 
                        <p>{{ __('Total Patients') }}</p>
@@ -25,7 +25,7 @@
                    <div class="icon">
                       <i class=" icon-people"></i>
                    </div>
-                   <a href="{{('/doctor/user')}}" class="small-box-footer">All Patients <i
+                   <a href="{{('/doctor/user')}}" class="small-box-footer"> <i
                                class="fa fa-arrow-circle-right"></i></a>
                </div>
 
@@ -35,15 +35,15 @@
                <div class="small-box bg-aqua">
                    <div class="inner">
                        <h3>
-                              {{$patientCount}}
+                              3
                        </h3>
 
-                       <p>{{ __('Total Patients') }}</p>
+                       <p>{{ __('Appointments today') }}</p>
                    </div>
                    <div class="icon">
-                       <i class=" icon-people"></i>
+                       <i class=" icon-list"></i>
                    </div>
-                   <a href="#" class="small-box-footer">All Tasks <i
+                   <a href="#" class="small-box-footer"><i
                                class="fa fa-arrow-circle-right"></i></a>
                </div>
 
@@ -53,15 +53,15 @@
                <div class="small-box bg-aqua">
                    <div class="inner">
                        <h3>
-                            5
+                            4
                        </h3>
 
-                       <p>{{ __('Tasks completed this month') }}</p>
+                       <p>{{ __('Available appointment slots') }}</p>
                    </div>
                    <div class="icon">
-                       <i class="ion ion-ios-book-outline"></i>
+                       <i class=" icon-list"></i>
                    </div>
-                   <a href="#" class="small-box-footer">All Tasks <i
+                   <a href="#" class="small-box-footer"> <i
                                class="fa fa-arrow-circle-right"></i></a>
                </div>
 
@@ -71,15 +71,15 @@
                <div class="small-box bg-aqua">
                    <div class="inner">
                        <h3>
-                            5
+                            2
                        </h3>
 
-                       <p>{{ __('Tasks completed this month') }}</p>
+                       <p>{{ __('Completed appointment slots') }}</p>
                    </div>
                    <div class="icon">
-                       <i class="ion ion-ios-book-outline"></i>
+                       <i class=" icon-check"></i>
                    </div>
-                   <a href="#" class="small-box-footer">All Tasks <i
+                   <a href="#" class="small-box-footer"> <i
                                class="fa fa-arrow-circle-right"></i></a>
                </div>
 

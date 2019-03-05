@@ -50,23 +50,22 @@ Route::prefix('admin')->group(function() {
     Route::get('/login/change-password', 'Admin\LoginController@getChangePassword'); // ✓
     Route::post('/login/change-password', 'Admin\LoginController@postChangePassword'); // ✓
 
-    Route::get('/roles', 'Admin\RoleController@getIndex'); // ✓
-
-    Route::get('/roles/add', 'Admin\RoleController@getAdd'); // ✓
-    Route::post('/roles/add', 'Admin\RoleController@postAdd'); // ✓
+    Route::get('/roles', 'Admin\RoleController@getIndex');
+    Route::get('/roles/add', 'Admin\RoleController@getAdd');
+    Route::post('/roles/add', 'Admin\RoleController@postAdd');
 
     // User Management
     Route::get('/user', 'Admin\UserController@index');
     Route::post('/user', 'Admin\UserController@postAdd');
- //Route::post('/user/add', 'Admin\UserController@postAdd'); // ✓
-    Route::get('/user/edit', 'Admin\UserController@getEdit'); // ✓
-    Route::post('/user/edit', 'Admin\UserController@postEdit'); // ✓
+ //Route::post('/user/add', 'Admin\UserController@postAdd');
+    Route::get('/user/edit', 'Admin\UserController@getEdit');
+    Route::post('/user/edit', 'Admin\UserController@postEdit');
     Route::post('/user/search', 'Admin\UserController@searchUsers');
     //add users
-    Route::get('/user/add_patient', 'Admin\UserController@getPatientAdd'); // ✓
-    Route::post('/user/add_patient', 'Admin\UserController@postPatientAdd'); // ✓
-    Route::get('/user/add_doctor', 'Admin\UserController@getDoctorAdd'); // ✓
-    Route::post('/user/add_doctor', 'Admin\UserController@postDoctorAdd'); // ✓
+    Route::get('/user/add_patient', 'Admin\UserController@getPatientAdd');
+    Route::post('/user/add_patient', 'Admin\UserController@postPatientAdd');
+    Route::get('/user/add_doctor', 'Admin\UserController@getDoctorAdd');
+    Route::post('/user/add_doctor', 'Admin\UserController@postDoctorAdd');
     //edit users
     Route::get('/user/edit_patient', 'Admin\UserController@getPatientEdit');
     Route::post('/user/edit_patient', 'Admin\UserController@postPatientEdit');
@@ -78,6 +77,10 @@ Route::prefix('admin')->group(function() {
 Route::prefix('doctor')->group(function() {
    Route::get('/', 'Doctor\DoctorController@index');
 
+   Route::get('/edit_details', 'Doctor\DoctorController@getEdit');
+   Route::post('/edit_details', 'Doctor\DoctorController@postedit');
+
+
    //manage patient
    Route::get('/patients', 'Doctor\PatientController@index');
    Route::get('/patients/add', 'Doctor\PatientController@getAdd');
@@ -86,20 +89,64 @@ Route::prefix('doctor')->group(function() {
    Route::post('/patients/edit', 'Doctor\PatientController@postEdit');
    //appointments
    Route::get('/patients/appointments', 'Doctor\AppointmentController@index');
+   Route::get('/patients/appointments/add', 'Doctor\AppointmentsController@getAdd');
+   Route::post('/patients/appointments/add', 'Doctor\AppointmentsController@postAdd');
    Route::get('/patients/appointments/edit', 'Doctor\AppointmentController@getEdit');
    Route::post('/patients/appointments/edit', 'Doctor\AppointmentController@postEdit');
    Route::post('/patients/appointments/delete', 'Doctor\AppointmentController@delete');
+   //allergies
+   Route::get('/patients/allergies', 'Doctor\Patient\AllergyController@index');
+   Route::get('/patients/allergies/add', 'Doctor\Patient\AllergyController@getAdd');
+   Route::post('/patients/allergies/add', 'Doctor\Patient\AllergyController@postAdd');
+   Route::get('/patients/allergies/edit', 'Doctor\Patient\AllergyController@getEdit');
+   Route::post('/patients/allergies/edit', 'Doctor\Patient\AllergyController@postEdit');
+   Route::post('/patients/allergies/delete', 'Doctor\Patient\AllergyController@delete');
+   //medication
+   Route::get('/patients/medication', 'Doctor\Patient\MedicationController@index');
+   Route::get('/patients/medication/add', 'Doctor\Patient\MedicationController@getAdd');
+   Route::post('/patients/medication/add', 'Doctor\Patient\MedicationController@postAdd');
+   Route::get('/patients/medication/edit', 'Doctor\Patient\MedicationController@getEdit');
+   Route::post('/patients/medication/edit', 'Doctor\Patient\MedicationController@postEdit');
+   Route::post('/patients/medication/delete', 'Doctor\Patient\MedicationController@delete');
+
+
 
 });
 
 Route::prefix('patient')->group(function() {
    Route::get('/', 'Patient\PatientController@index');
+
+   Route::get('/manage_details', 'Patient\PatientController@getEdit');
+   Route::post('/manage_details', 'Patient\PatientController@postEdit');
+
    Route::get('/appointments', 'Patient\AppointmentsController@index');
    Route::get('/appointments/add', 'Patient\AppointmentsController@getAdd');
    Route::post('/appointments/add', 'Patient\AppointmentsController@postAdd');
 
+   Route::get('/appointments/edit', 'Patient\AppointmentsController@getEdit');
+   Route::post('/appointments/edit', 'Patient\AppointmentsController@postAdd');
+
+   Route::post('/appointments/delte', 'Patient\AppointmentsController@postAdd');
+
+   Route::get('/medication', 'Patient\MedicationController@index');
+
+   Route::get('/allergies', 'Patient\AllergyController@index');
+
+   Route::get('/perscriptions', 'Patient\PerscriptionController@index');
+   Route::get('/perscriptions/request', 'Patient\PerscriptionController@getRequest');
+   Route::post('/perscriptions/request', 'Patient\PerscriptionController@postRequest');
+
+
 });
 
+Route::prefix('nurse')->group(function() {
+
+});
+
+Route::prefix('reception')->group(function() {
+
+});
+//waiting list with priority levels
 
 // Route::group(['middleware' => ['auth', 'role:doctor'], 'prefix' => '/doctor'], function () {
 //    Route::get('/', 'Doctor\DoctorController@index');

@@ -12,22 +12,22 @@
             <a class="nav-link nav-dropdown-toggle" href="{{ url('doctor/patients')}}"><i class="icon-note"></i> Manage</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Icons</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Appointmets</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="icons/font-awesome.html"><i class="icon-star"></i> Font Awesome <span class="badge badge-secondary">4.7</span></a>
+                <a class="nav-link" href="icons/font-awesome.html"><i class="icon-star"></i> Clinics <span class="badge badge-secondary">4.7</span></a>
               </li>
 
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i> Widgets <span class="badge badge-primary">NEW</span></a>
+            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i> Clinics <span class="badge badge-primary">NEW</span></a>
           </li>
 
-            Extras
+
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Pages</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Medicine</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="views/pages/login.html" target="_top"><i class="icon-star"></i> Login</a>

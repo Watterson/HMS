@@ -27,9 +27,9 @@ class CreatePatientsTable extends Migration
             $table->text('post_surgical_history')->nullable();
             $table->integer('created_by')->unsigned();
             $table->timestamps();
-            // $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
-            // $table->foreign('doctor_id')->references('id')->on('users')->onDelete('restrict');
-            // $table->foreign("created_by")->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('doctor_id')->references('id')->on('users')->onDelete('restrict');
+            //$table->foreign("created_by")->references('id')->on('users')->onDelete('restrict');
         });
     }
     /**

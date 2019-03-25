@@ -24,7 +24,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
 	  @yield('css_includes')
-	<style>
+
+  <style>
 
 		.hidden-div {
 			display: none;

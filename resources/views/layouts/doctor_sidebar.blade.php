@@ -6,36 +6,22 @@
           </li>
 
           <li class="nav-title">
-            Patients <i class="icon-people"></i>
+             <i class="icon-people"></i>
           </li>
           <li class="nav-item ">
-            <a class="nav-link nav-dropdown-toggle" href="{{ url('doctor/patients')}}"><i class="icon-note"></i> Manage</a>
+            <a class="nav-link " href="{{ url('doctor/patients')}}"><i class="fas fa-users"></i> Patients</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="{{ url('doctor/appointments')}}"><i class="fas fa-clipboard-list"></i> Appointments</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Appointmets</a>
-            <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link" href="icons/font-awesome.html"><i class="icon-star"></i> Clinics <span class="badge badge-secondary">4.7</span></a>
-              </li>
-
-            </ul>
+            <a class="nav-link " href="{{ url('doctor/labs')}}"><i class="fas fa-flask"></i> Labs</a>
+          </li>
+          <li class="nav-item nav-dropdown">
+            <a class="nav-link " href="{{ url('doctor/medicine')}}"><i class="fas fa-pills"></i> Medicine</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="widgets.html"><i class="icon-calculator"></i> Clinics <span class="badge badge-primary">NEW</span></a>
-          </li>
-
-
-          </li>
-          <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Medicine</a>
-            <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link" href="views/pages/login.html" target="_top"><i class="icon-star"></i> Login</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="views/pages/register.html" target="_top"><i class="icon-star"></i> Register</a>
-              </li>
-            </ul>
+            <a class="nav-link" href="{{ url('doctor/hours')}}"><i class="fas fa-clock"></i> Working Hours</a>
           </li>
         </ul>
       </nav>

@@ -11,29 +11,42 @@
     <div class="card">
         <div class="card-header">
           <div class=" row">
-              <div class="col-8">
+              <div class="col-10">
                   <strong>User Accounts</strong>
               </div>
                 <div class=" col-2 text-right">
                   <a href="{{url('doctor/patients/add')}}" class="btn btn-link" role="button">Add Patient</a>
                 </div>
+             </div>
+           </div>
+         </div>
+          @foreach($patients as $patient)
+          <div class="card ">
+          <div class="container row">
+              <div class="col-4">
+                <img src="{{url('/images/profile-img.png')}}" >
+              </div>
+              <div class="col-4">
+                <h2 style="text-decoration:underline;">{{ $patient->first_name }} {{ $patient->last_name }}</h2>
+                <p><strong>D.O.B: </strong>N/A </p>
+                <p><strong>Last Appointmet: </strong>N/A </p>
+                <p><strong>Next Appointmet: </strong>N/A </p>
+                <p><strong>Lab Results: </strong>Pending </p>
+              </div>
+              <div class="col-4">
+              <table style="height: 100%;">
+                <tbody>
+                  <tr>
+                    <td class="align-middle"><a href="{{url('doctor/patients/view?user='.$patient->id)}}" type="link" id="btn-link" class="btn btn-sm btn-primary " ><i class="fas fa-eye"></i> Veiw Details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
             </div>
-        </div>
-        <div class="card-block">
-          <table class="table table-striped">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-            </tr>
-            @foreach($patients as $patient)
-            <tr>
-              <td><a href="{{url('doctor/patients/edit?user='.$patient->id)}}">{{ $patient->first_name }} {{ $patient->last_name }}</a></td>
-              <td>{{ $patient->email }}</td>
-            </tr>
-            @endforeach
+          </div>
+          @endforeach
 
-          </table>
-        </div>
+      </div>
     </div>
 @endsection
 

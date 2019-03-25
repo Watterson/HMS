@@ -108,7 +108,9 @@ figure {
 hr {
   box-sizing: content-box;
   height: 0;
-  overflow: visible; }
+  overflow: visible;
+  align: center;
+ }
 
 pre {
   font-family: monospace, monospace;
@@ -1697,7 +1699,7 @@ select.form-control:focus::-ms-value {
   .input-group-lg > .input-group-btn > .form-control-static.btn {
     padding-right: 0;
     padding-left: 0; }
-    
+
 
 .form-control-sm, .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon,

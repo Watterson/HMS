@@ -49,13 +49,28 @@ class PatientController extends Controller
             'last_name'     => 'required|min:3',
             'email'    => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
+            'gender'  => 'required',
+            'mobile'  => 'required|integer|min:6|unique:users',
+            'address' => 'required|',
+            'county' => 'required',
+            'postcode'  => 'required',
+            'dob' => 'required|date_format:d/m/Y',
+            'kin' => 'required',
+
         ]);
+
+        //finish adding all feilds into
 
         $first_name = Request()->input('first_name');
         $last_name = Request()->input('last_name');
         $email = Request()->input('email');
         $password = Hash::make(Request()->input('password'));
         $mobile = Request()->input('mobile');
+        $address = Request()->input('address');
+        $postcode = Request()->input('postcode');
+        $county = Request()->input('county');
+        $dob = Request()->input('dob');
+        $kin = Request()->input('kin');
         //$address = Request()->input('address');
         //$dob = Request()->input('dob');
         //$gender = Request()->input('gender');
@@ -84,7 +99,7 @@ class PatientController extends Controller
         $patient->save();
 
 
-          
+
 
             return Redirect('doctor/patients');
     }
@@ -96,8 +111,6 @@ class PatientController extends Controller
 
         $user = $this->findId($userId);
 
-        $name = $user->name;
-        $email = $user->email;
       //  $mobile = $user->mobile;
       //  $address = $user->address;
       //  $gender = $user->gender;
@@ -106,13 +119,26 @@ class PatientController extends Controller
         // $perscriptions;
         // $appointments;
         return View('doctor.patient.edit', [
+            'patient' => $user,
+
+        ]);
+    }
+    public function getVeiw()
+    {
+        $userId = Request()->input('user');
+
+        $user = User::find($userId);
+        $patient = Patient::find($userId);
+
+      //  $mobile = $user->mobile;
+      //  $address = $user->address;
+      //  $gender = $user->gender;
+        // $alergies;
+        // $perscriptions;
+        // $appointments;
+        return View('doctor.patient.view', [
             'user' => $user,
-            'name' => $name,
-            'email' => $email,
-          //  'mobile' => $mobile,
-          //  'address' => $address,
-            'role' => $role,
-          //  'gender' => $gender,
+            'patient' => $patient,
         ]);
     }
 

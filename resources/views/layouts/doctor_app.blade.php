@@ -15,6 +15,8 @@
     <!-- Icons -->
     <link href="{{url('/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{url('/css/simple-line-icons.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 
     <!-- Main styles for this application -->
     <link href="{{url('/css/style.css')}}" rel="stylesheet">
@@ -22,9 +24,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 
 	  @yield('css_includes')
-
 	<style>
-		@yield('css_styles')
+
 		.hidden-div {
 			display: none;
 		}
@@ -74,7 +75,7 @@
                             @if (Auth::guard('admin')->check())
                                 Admin
                             @else
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->first_name }}
                             @endif
                             <span class="caret"></span>
                         </a>

@@ -21,11 +21,10 @@ class UserController extends Controller
      * @return void
      */
 
-    public function __construct()
-    {
-        // $this->middleware('auth:admin');
-
-    }
+     public function __construct()
+     {
+         $this->middleware('auth:admin');
+     }
     /**
      * Show the application dashboard.
      *
@@ -38,6 +37,7 @@ class UserController extends Controller
 
         foreach ($users as $user) {
           $user_role =  Role::select('role')->where('id', $user->role_id)->get();
+        //  dd($user_role);
           $user->role = $user_role[0]->role;
         }
 
@@ -194,7 +194,7 @@ class UserController extends Controller
                   $patient->id = $user_id;
                   $patient->first_name = $first_name;
                   $patient->last_name = $last_name;
-                  $patient->created_by = Auth::user()->id();
+                  $patient->created_by = Auth::guest()->id();
 
                   $patient->save();
                   break;

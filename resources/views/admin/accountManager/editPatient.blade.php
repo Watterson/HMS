@@ -6,7 +6,7 @@
 
         <div class="card">
             <div class="card-header">
-                <strong>Add Patient</strong>
+                <strong>Edit Patient</strong>
             </div>
             <div class="card-block">
                 {!! Form::open(['url'=>'admin/user/edit_patient','class'=>'']) !!}

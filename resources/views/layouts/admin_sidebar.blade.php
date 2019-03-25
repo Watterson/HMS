@@ -13,10 +13,14 @@
             </li>
            -->
 			      <li class="nav-item">
-                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/user')}}"><i class="icon-note"></i>Users</a>
+                <a class="nav-link" id="admin-edit-details" href="{{ url('admin/user')}}"><i class="icon-people"></i>Users</a>
             </li>
+        <!--    <li class="nav-item">
+                <a class="nav-link" id="admin-roles" href="{{ url('admin/roles')}}"><i class="icon-note"></i> Roles</a>
+            </li>
+        -->
             <li class="nav-item">
-                <a class="nav-link" id="admin-roles" href="{{ url('admin/roles')}}"><i class="icon-people"></i> Roles</a>
+                <a class="nav-link" id="admin-roles" href="{{ url('admin/centres')}}"><i class="icon-home"></i> Centres</a>
             </li>
 			<!-- <li class="nav-item">
                 <a class="nav-link" id="admin-issue-cards" href="{{ url('admin/card/search_index')}}"><i class="icon-wallet"></i> Issue Cards</a>

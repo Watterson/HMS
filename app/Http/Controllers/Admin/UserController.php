@@ -117,6 +117,7 @@ class UserController extends Controller
         $email = Request()->input('email');
         $password = Hash::make(Request()->input('password'));
         $mobile = Request()->input('mobile');
+        $centre = Request()->input('centre');
         //$address = Request()->input('address');
         //$dob = Request()->input('dob');
         //$gender = Request()->input('gender');
@@ -163,6 +164,8 @@ class UserController extends Controller
         $role = Request()->input('role');
         $email = Request()->input('email');
         $password = Hash::make(Request()->input('password'));
+        $centre = Request()->input('centre');
+
 
             try {
               $user = new User;
@@ -183,7 +186,7 @@ class UserController extends Controller
                   $doctor->id = $user_id;
                   $doctor->first_name = $first_name;
                   $doctor->last_name = $last_name;
-
+                  $doctor->centre_id = $centre;
                   $doctor->save();
                   break;
 
@@ -245,6 +248,7 @@ class UserController extends Controller
       $doctor->email = Request()->input('email');
       $doctor->password = Hash::make(Request()->input('password'));
       $doctor->mobile = Request()->input('mobile');
+      $doctor->centre_id = Request()->input('centre');
 
       $doctor->save();
 

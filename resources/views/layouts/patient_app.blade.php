@@ -13,8 +13,6 @@
     <title>HMS</title>
 
     <!-- Icons -->
-    <link href="{{url('/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{url('/css/simple-line-icons.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
@@ -22,6 +20,8 @@
     <link href="{{url('/css/style.css')}}" rel="stylesheet">
     <link href="{{url('/css/plugins/jquery.auto-complete.css')}}" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet">
 
 	  @yield('css_includes')
 
@@ -121,7 +121,7 @@
 
 
     <div class="app-body">
-      
+
                 <!-- Main content -->
         <main class="main">
 
@@ -145,22 +145,17 @@
     </footer>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.en-GB.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-
-    <!-- Plugins and scripts required by all views -->
 
     <!-- GenesisUI main scripts -->
     <script  type="text/javascript" src="{{ url('/js/app.js') }}"></script>
 
     <!-- Plugins and scripts required by this views -->
-
-
-
-	<script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>
+  <script  type="text/javascript" src="{{ url('/js/patient/index.js') }}"></script>
 
 	@yield('js_includes')
     <!-- Custom scripts required by this view -->

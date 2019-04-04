@@ -84,6 +84,16 @@
                         @endif
                     </div>
                 </div>
+                <div class="form-group @if($errors->first('centre')) has-danger @endif">
+                    <label class="control-label">Centre</label>
+                    <div class="controls">
+                        {!! Form::text('centre',null, ['class'=>'form-control']) !!}
+
+                        @if($errors->first('centre'))
+                            <div class="form-control-feedback">{{$errors->first('centre')}}</div>
+                        @endif
+                    </div>
+                </div>
             </div>
             <div class="card-footer text-center">
                 <button type="submit" id="btn-save" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Save</button>

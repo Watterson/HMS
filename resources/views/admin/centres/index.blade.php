@@ -17,20 +17,23 @@
             <div class="card-block">
             	<table class="table table-striped">
             		<tr>
-                  <th>Centre ID</th>
-            			<th>Name</th>
+                  <th> # </td>
+                  <th>Centre Name</th>
+            			<th>Email</th>
                   <th>Address</th>
-                  <th>Doctors</th>
-            			<?/*<th></th>*/?>
-
+                  <th>Postcode</th>
+            			<th>Doctors</th>
             		</tr>
-
+                @foreach($centres as $centre)
             		<tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $loop->iteration }}</td>
+                  <td><a href="{{url('admin/centres/edit?centre='.$centre->id)}}">{{$centre->name}}</td>
+                  <td>{{$centre->email}}</td>
+                  <td>{{$centre->address}}</td>
+                  <td>{{$centre->postcode}}</td>
+                  <td>{{$centre->doctorCount}}</td>
             		</tr>
-
+                @endforeach
             	</table>
             </div>
         </div>

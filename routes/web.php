@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('ajax', function(){ return view('ajax'); });
 
 // Route::post('/setpassword',  resetpassword(){
 //       $email = "admin@admin.com";
@@ -54,7 +55,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/centres/add', 'Admin\CentreController@getAdd');
     Route::post('/centres/add', 'Admin\CentreController@postAdd');
     Route::get('/centres/edit', 'Admin\CentreController@getEdit');
-    Route::post('/centres/edit', 'Admin\CentreController@getEdit');
+    Route::post('/centres/edit', 'Admin\CentreController@postEdit');
     Route::post('/centres/delete', 'Admin\CentreController@getEdit');
 
     // User Management
@@ -137,6 +138,9 @@ Route::prefix('doctor')->group(function() {
 
 Route::prefix('patient')->group(function() {
    Route::get('/', 'Patient\PatientController@index');
+   Route::get('/indexAjax', 'Patient\PatientController@getAjax');
+   Route::post('/searchAvailability', 'Patient\PatientController@searchAvailability');
+
 
    Route::get('/manage_details', 'Patient\PatientController@getEdit');
    Route::post('/manage_details', 'Patient\PatientController@postEdit');

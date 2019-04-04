@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('js_includes')
-<    <script type="text/javascript" src="{{url('/js/patientIndex.js')}}"></script>
 
 @endsection
 
@@ -35,33 +34,23 @@
           <div class="card">
             <div class="card-header">Book Appointment</div>
             <div class="card-body row" >
-              <div class=" col-md-4 text-center offset-md-2" id="chooseCentre">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select Centre
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Byrom Street</a>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Kenny</a>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Lime Street</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#"> Concert square</a>
-                </div>
+              <div class=" col-md-5 text-center offset-md-1 form-group" id="chooseCentre">
+                <label for="centreSelect">Centres:</label>
+                <select class="form-control" id="centreSelect" data-style="btn-primary" data-width="auto">
+                  <option class="dropdown-item " value="" active >Please select</option>s
+                  @foreach($centres as $centre)
+                  <option class="dropdown-item " value="{{$centre->id}}">{{$centre->name}}</option>
+                  @endforeach
+                </select>
               </div>
-              <div class=" col-md-4 text-center " id="chooseDoctor">
-                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select Doctor
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Dr John</a>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Dr Bucky</a>
-                    <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Surgery</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#"> Allergy Related</a>
-                </div>
+              <div class=" col-md-5 text-center " id="chooseDoctor">
+                <label for="doctorSelect">Doctors:   </label>
+                <select class="form-control" id="doctorSelect" data-style="btn-primary" data-width="auto" disabled>
+                  <option class="dropdown-item " value="" active >Please select</option>
+                  @foreach($doctors as $doctor)
+                  <option class="dropdown-item {{$doctor->centre_id}} doctorOptions" value="{{$doctor->id}}">Dr {{$doctor->first_name}} {{$doctor->last_name}}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="col-md-10 offset-md-1">
                 <div class="form-group">
@@ -73,11 +62,11 @@
               <div class="col-md-4 offset-md-4 ">
                 <div class="form-group">
                   <label for="date">Date:</label>
-                  <input type="date" class="form-control" id="date" data-provide="datepicker" >
+                  <input type="date" class="form-control" id="date"  >
                 </div>
               </div>
               <div class="col-md-12 text-center">
-                <button type="submit" id="btn-save" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Search Availability</button>
+                <button type="submit" id="search" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Search Availability</button>
               </div>
               <div>
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">

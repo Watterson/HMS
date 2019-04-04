@@ -51,5 +51,4 @@
 @endsection
 
 @section('js_includes')
-
 @endsection

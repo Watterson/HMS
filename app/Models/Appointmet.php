@@ -14,7 +14,6 @@ class Appointment extends Model{
   		'patient_id',
       'cancel_id',
       'appointment_time',
-      'duration'
   	];
 
     /**

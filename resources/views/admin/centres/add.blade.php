@@ -6,7 +6,7 @@
 
         <div class="card">
             <div class="card-header">
-                <strong>Add Patient</strong>
+                <strong>Add Centre</strong>
             </div>
             <div class="card-block">
                 {!! Form::open(['url'=>'admin/centres/add','class'=>'']) !!}
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group @if($errors->first('address')) has-danger @endif">
-                    <label class="control-label">Address</label>
+                    <label class="control-label">Address:</label>
                     <div class="controls">
                         {!! Form::text('address','',['class'=>'form-control']) !!}
 
@@ -43,13 +43,33 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group @if($errors->first('landline')) has-danger @endif">
-                    <label class="control-label">Contact Number</label>
+                <div class="form-group @if($errors->first('postcode')) has-danger @endif">
+                    <label class="control-label">Postcode:</label>
                     <div class="controls">
-                        {!! Form::password('landline',['class'=>'form-control']) !!}
+                        {!! Form::text('postcode','',['class'=>'form-control']) !!}
 
-                        @if($errors->first('landline'))
-                            <div class="form-control-feedback">{{$errors->first('landline')}}</div>
+                        @if($errors->first('postcode'))
+                            <div class="form-control-feedback">{{$errors->first('postcode')}}</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group @if($errors->first('county')) has-danger @endif">
+                    <label class="control-label">County:</label>
+                    <div class="controls">
+                        {!! Form::text('county','',['class'=>'form-control']) !!}
+
+                        @if($errors->first('county'))
+                            <div class="form-control-feedback">{{$errors->first('county')}}</div>
+                        @endif
+                    </div>
+                </div>
+                <div class="form-group @if($errors->first('phone')) has-danger @endif">
+                    <label class="control-label">Contact Number:</label>
+                    <div class="controls">
+                        {!! Form::text('phone','',['class'=>'form-control']) !!}
+
+                        @if($errors->first('phone'))
+                            <div class="form-control-feedback">{{$errors->first('phone')}}</div>
                         @endif
                     </div>
                 </div>

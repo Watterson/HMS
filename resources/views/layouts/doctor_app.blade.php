@@ -43,8 +43,8 @@
         <div class="modal-header">
           <h4 class="modal-title" id="modal-title"></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">×</span>
-                          </button>
+              <span aria-hidden="true">×</span>
+          </button>
         </div>
         <div class="modal-body" id="overlay-body">
         </div>
@@ -139,6 +139,7 @@
             </div>
             <!-- /.conainer-fluid -->
         </main>
+        @yield('modals')
     </div>
 
     <footer class="app-footer">
@@ -146,8 +147,9 @@
     </footer>
 
     <!-- Bootstrap and necessary plugins -->
-    <script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
@@ -161,7 +163,6 @@
 
 
 
-	<script src="{{ url('/js/plugins/jquery.auto-complete.min.js') }}"></script>
 
 	@yield('js_includes')
     <!-- Custom scripts required by this view -->

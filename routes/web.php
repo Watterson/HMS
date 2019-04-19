@@ -84,6 +84,7 @@ Route::prefix('doctor')->group(function() {
    Route::get('/edit_details', 'Doctor\DoctorController@getEdit');
    Route::post('/edit_details', 'Doctor\DoctorController@postedit');
 
+   Route::get('/searchSurname', 'Doctor\DoctorController@searchSurname');
 
    //manage patient
    Route::get('/patients', 'Doctor\PatientController@index');
@@ -117,10 +118,16 @@ Route::prefix('doctor')->group(function() {
    Route::get('/medicine', 'Doctor\MedicineController@index');
    Route::get('/medicine/add', 'Doctor\MedicineController@getAdd');
    Route::post('/medicine/add', 'Doctor\MedicineController@postAdd');
+   Route::get('/allergy/add', 'Doctor\MedicineController@getAllergy');
+   Route::post('/allergy/add', 'Doctor\MedicineController@postAllergy');
    //Appointments
    Route::get('/appointments', 'Doctor\AppointmentController@index');
    Route::get('/appointments/add', 'Doctor\AppointmentController@getAdd');
    Route::post('/appointments/add', 'Doctor\AppointmentController@postAdd');
+   Route::get('/appointments/view', 'Doctor\AppointmentController@getView');
+   Route::post('/appointments/submit', 'Doctor\AppointmentController@postSubmit');
+
+
    //Labs
    Route::get('/labs', 'Doctor\LabController@index');
    Route::get('/labs/add', 'Doctor\LabController@getAdd');
@@ -130,7 +137,7 @@ Route::prefix('doctor')->group(function() {
    Route::get('/hours/add', 'Doctor\HourController@getAdd');
    Route::post('/hours/add', 'Doctor\HourController@postAdd');
 
-
+   Route::get('/patients/appointments', 'Doctor\AppointmentController@index');
 
 
 
@@ -140,6 +147,8 @@ Route::prefix('patient')->group(function() {
    Route::get('/', 'Patient\PatientController@index');
    Route::get('/indexAjax', 'Patient\PatientController@getAjax');
    Route::post('/searchAvailability', 'Patient\PatientController@searchAvailability');
+   Route::post('/createAppointment', 'Patient\PatientController@createAppointment');
+
 
 
    Route::get('/manage_details', 'Patient\PatientController@getEdit');

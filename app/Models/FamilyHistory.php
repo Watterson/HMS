@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model{
+class FamilyHistory extends Model{
 
-    protected $table = 'appointments';
+    protected $table = 'family_history';
 
     protected $fillable = [
-  		'doctor_id',
   		'patient_id',
-      'cancel_id',
-      'appointment_time',
+      'contracted',
+      'disease_id '
+      'severity',
+      'treatment_available',
+  		'treatment_perscribed',
+      'perscription_id',
   	];
 
     /**

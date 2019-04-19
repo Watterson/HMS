@@ -39,7 +39,7 @@
                 <select class="form-control" id="centreSelect" data-style="btn-primary" data-width="auto">
                   <option class="dropdown-item " value="" active >Please select</option>s
                   @foreach($centres as $centre)
-                  <option class="dropdown-item " value="{{$centre->id}}">{{$centre->name}}</option>
+                  <option class="dropdown-item "  value="{{$centre->id}}">{{$centre->name}}</option>
                   @endforeach
                 </select>
               </div>
@@ -54,8 +54,8 @@
               </div>
               <div class="col-md-10 offset-md-1">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Reason:</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="reasonHelp" placeholder="E.g Sore head">
+                  <label for="reason">Reason:</label>
+                  <input type="text" class="form-control" id="reason" aria-describedby="reasonHelp" placeholder="E.g Sore head">
                   <small id="reasonHelp" class="form-text text-muted">What is the reason for making an appointment?</small>
                 </div>
               </div>
@@ -65,33 +65,36 @@
                   <input type="date" class="form-control" id="date"  >
                 </div>
               </div>
-              <div class="col-md-12 text-center">
+              <div class="col-md-12 mb-3 text-center">
                 <button type="submit" id="search" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Search Availability</button>
               </div>
-              <div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                  <div class="card-body text-center">
-                    <h1 class="card-title">10:00am</h1>
+              <div id="avaiableTimes" style="display:none;">
+                <div class="row mb-2 offset-md-2">
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="9" value="9" data-toggle="modal" data-target="#ConfirmationModal">9:00am</button>
+                  </div>
+                  <div class="col-md-2 m-2 " >
+                    <button type="button" class="btn btn-success text-white apt-time" id="10" value="10" data-toggle="modal" data-target="#ConfirmationModal">10:00am</button>
+                  </div>
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="11" value="11" data-toggle="modal" data-target="#ConfirmationModal">11:00am</button>
+                  </div>
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="12" value="12" data-toggle="modal" data-target="#ConfirmationModal">12:00pm</button>
                   </div>
                 </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                  <div class="card-body text-center">
-                    <h1 class="card-title">9:00am</h1>
+                <div class="row mb-2 offset-md-2">
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="2" value="2" data-toggle="modal" data-target="#ConfirmationModal"> 2:00pm </button>
                   </div>
-                </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                  <div class="card-body text-center">
-                    <h1 class="card-title">12:00am</h1>
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="3" value="3" data-toggle="modal" data-target="#ConfirmationModal"> 3:00pm </button>
                   </div>
-                </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                  <div class="card-body text-center">
-                    <h1 class="card-title">1:00pm</h1>
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="4" value="4" data-toggle="modal" data-target="#ConfirmationModal"> 4:00pm </button>
                   </div>
-                </div>
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                  <div class="card-body text-center">
-                    <h1 class="card-title">3:00pm</h1>
+                  <div class="col-md-2 m-2" >
+                    <button type="button" class="btn btn-success text-white apt-time" id="5" value="5" data-toggle="modal" data-target="#ConfirmationModal"> 5:00pm </button>
                   </div>
                 </div>
               </div>
@@ -161,4 +164,53 @@
           </div>
         </div>
 </div>
+<div class="modal fade" id="ConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="ConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ConfirmationModalLabel">Confirm Appointment Booking</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="centreModal" class="col-sm-2 col-form-label">Centre: </label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="centreModal" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="doctorModal" class="col-sm-2 col-form-label">Doctor: </label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="doctorModal" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="reasonModal" class="col-sm-2 col-form-label">Reason: </label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="reasonModal" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="dateModal" class="col-sm-2 col-form-label">Date: </label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="dateModal" value="">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="timeModal" class="col-sm-2 col-form-label">Time: </label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="timeModal" value="">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="confirmBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection

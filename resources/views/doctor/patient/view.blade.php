@@ -97,7 +97,7 @@
                     <th scope="col">Centre</th>
                     <th scope="col">Reason</th>
                     <th scope="col">Status</th>
-                    <th   scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -118,16 +118,157 @@
           </div>
         </div>
         <div class="tab-pane fade" id="nav-allergies" role="tabpanel" aria-labelledby="nav-allergies-tab">
-          Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+          <div class="row justify-content-center  mt-4">
+              <div class="col-lg-10 ">
+                  <div class="card">
+                      <div class="card-header">
+                        <div class=" row">
+                            <div class="col-10">
+                                <strong>Allergies</strong>
+                            </div>
+                              <div class="col-2 text-center">
+                                <a href="{{url('doctor/allergy/add')}}" class="btn btn-link" role="button">Add Allergy</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-block">
+                      	<table class="table table-striped">
+                      		<tr>
+                            <th> # </td>
+                            <th>Allergy Type</th>
+                      			<th>Agent</th>
+                            <th>Reaction</th>
+                            <th>Severity</th>
+                            <th>Source</th>
+
+                      		</tr>
+                          @foreach($allergies as $allergy)
+                      		<tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><a href="{{url('doctor/allergy/edit?allergy='.$allergy->id)}}">{{$allergy->type}}</td>
+                            <td>{{$allergy->agent}}</td>
+                            <td>{{$allergy->reaction}}</td>
+                            <td>{{$allergy->severity}}</td>
+                            <td>{{$allergy->source}}</td>
+                      		</tr>
+                          @endforeach
+                      	</table>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="nav-medhis" role="tabpanel" aria-labelledby="nav-medhis-tab">
-          Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+          <div class="row justify-content-center  mt-4">
+              <div class="col-lg-10 ">
+                  <div class="card">
+                      <div class="card-header">
+                        <div class=" row">
+                            <div class="col-10">
+                                <strong>Medicines</strong>
+                            </div>
+                              <div class="col-2 text-center">
+                                <a href="{{url('doctor/medicine/add')}}" class="btn btn-link" role="button">Add Medicine</a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-block">
+                      	<table class="table table-striped">
+                      		<tr>
+                            <th> # </td>
+                            <th>Medication Name</th>
+                      			<th>Description</th>
+                            <th>Dose</th>
+                            <th>Duration</th>
+                            <th>Quantity</th>
+
+                      		</tr>
+                          @foreach($medicines as $medicine)
+                      		<tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td><a href="{{url('doctor/medicine/edit?medicine='.$medicine->id)}}">{{$medicine->name}}</td>
+                            <td>{{$medicine->description}}</td>
+                            <td>{{$medicine->dose}}</td>
+                            <td>{{$medicine->duration}}</td>
+                            <td>{{$medicine->quantity}}</td>
+
+
+                      		</tr>
+                          @endforeach
+                      	</table>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="nav-famhis" role="tabpanel" aria-labelledby="nav-famhis-tab">
-          Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+          <div class="row justify-content-center  mt-4">
+              <div class="col-lg-10 ">
+                  <div class="card">
+                      <div class="card-header">
+                        <div class=" row">
+                            <div class="col-10">
+                                <strong>Family History</strong>
+                            </div>
+
+                          </div>
+                      </div>
+                      <div class="card-block">
+                      	<table class="table table-striped">
+                      		<tr>
+                            <th> # </td>
+                            <th>Condition</th>
+                      			<th>Description</th>
+                            <th>Severity</th>
+                            <th>Current Risk</th>
+                      		</tr>
+
+                      		<tr>
+                            <td>1</td>
+                            <td>Diabetes</td>
+                            <td>The body doesn't produce enough insulin, or the body's cells don't react to insulin</td>
+                            <td>Life threatening</td>
+                            <td>High</td>
+                      		</tr>
+                      	</table>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
         <div class="tab-pane fade" id="nav-lab" role="tabpanel" aria-labelledby="nav-lab-tab">
-          Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+          <div class="row justify-content-center  mt-4">
+              <div class="col-lg-10 ">
+                  <div class="card">
+                      <div class="card-header">
+                        <div class=" row">
+                            <div class="col-10">
+                                <strong>Lab Results</strong>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="card-block">
+                      	<table class="table table-striped">
+                      		<tr>
+                            <th> # </td>
+                            <th>Date Requested</th>
+                      			<th>Date Returned</th>
+                            <th>Type</th>
+                            <th>Completed</th>
+                      		</tr>
+
+                      		<tr>
+                            <td>1</td>
+                            <td>01/04/2019</td>
+                            <td>N/A</td>
+                            <td>Scan</td>
+                            <td>False</td>
+                      		</tr>
+                      	</table>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
       </div>
 

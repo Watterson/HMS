@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User as User;
 use App\Models\Patient as Patient;
 use App\Models\Doctor as Doctor;
-
+use App\Models\Allergy as Allergy;
+use App\Models\Medicine as Medicine;
 
 
 class PatientController extends Controller
@@ -95,6 +96,10 @@ class PatientController extends Controller
         $patient->id = $user_id[0]->id;
         $patient->first_name = $first_name;
         $patient->last_name = $last_name;
+        $patient->address = $address;
+        $patient->postcode = $postcode;
+        $patient->dob = $dob;
+        $patient->last_name = $last_name;
       //  $patient->mobile = $mobile;
         $patient->save();
 
@@ -129,6 +134,8 @@ class PatientController extends Controller
 
         $user = User::find($userId);
         $patient = Patient::find($userId);
+        $allergies = Allergy::all();
+        $medicines = Medicine::all();
 
       //  $mobile = $user->mobile;
       //  $address = $user->address;
@@ -139,6 +146,8 @@ class PatientController extends Controller
         return View('doctor.patient.view', [
             'user' => $user,
             'patient' => $patient,
+            'medicines' => $medicines,
+            'allergies' => $allergies,
         ]);
     }
 
@@ -148,4 +157,5 @@ class PatientController extends Controller
 
       return $user;
     }
+
 }

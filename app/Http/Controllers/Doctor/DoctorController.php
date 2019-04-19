@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller as Controller;
 use App\Models\User as User;
 use App\Models\Patient as Patient;
 use App\Models\Doctor as Doctor;
+use Auth;
+
 
 
 class DoctorController extends Controller
@@ -28,9 +30,19 @@ class DoctorController extends Controller
     public function index()
     {
         $patientCount = User::where('role_id', 2)->count();
+        $patients = Patient::all();
+        return view('doctor.index', [
+            'patientCount' => $patientCount,
+            'patients' => $patients,
+        ]);
+    }
+    public function index1($patients)
+    {
+        $patientCount = User::where('role_id', 2)->count();
 
         return view('doctor.index', [
             'patientCount' => $patientCount,
+            'patients' => $patients,
         ]);
     }
 
@@ -127,5 +139,19 @@ class DoctorController extends Controller
       $user = Patient::findorFail($id);
 
       return $user;
+    }
+
+    public function searchSurname()
+    {
+      $surname = Request()->input('surname');
+
+      $patients = Patient::where('last_name', 'like', '%' . $surname . '%');
+      $patientCount = User::where('role_id', 2)->count();
+      return view('doctor.index', [
+          'patientCount' => $patientCount,
+          'patients' => $patients,
+      ]);
+
+      // code...
     }
 }

@@ -58,9 +58,9 @@ class PatientController extends Controller
       $doctor = $request->input('doctor');
       $date = $request->input('date');
 
-     $appointments = Appointment::select('time')
+     $appointments = Appointment::select('appointment_time')
                                 ->where('doctor_id', $doctor)
-                                ->where('date', $date)
+                                ->where('appointment_date', $date)
                                 ->get();
      $response = array(
          'date' => $date,
@@ -68,5 +68,26 @@ class PatientController extends Controller
          'appointments' => $appointments,
      );
      return response()->json($response);
+  }
+
+  public function createAppointment(Request $request)
+  {
+    $doctor = $request->input('doctor');
+    $date = $request->input('date');
+    $reason = $request->input('reason');
+    $date = $request->input('date');
+    $time = $request->input('time');
+
+    $appointment = new Appointment;
+    $appointment->doctor_id = $doctor;
+    $appointment->appointment_time = $time;
+    $appointment->appointment_date = $date;
+    $appointment->reason = $reason;
+    $appointment->patient_id = Auth::id();
+    $appointment->save();
+
+    return ;
+
+    // code...
   }
 }

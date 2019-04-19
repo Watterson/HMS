@@ -20,9 +20,7 @@
           <li class="nav-item nav-dropdown">
             <a class="nav-link " href="{{ url('doctor/medicine')}}"><i class="fas fa-pills"></i> Medicine</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url('doctor/hours')}}"><i class="fas fa-clock"></i> Working Hours</a>
-          </li>
+        
         </ul>
       </nav>
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
